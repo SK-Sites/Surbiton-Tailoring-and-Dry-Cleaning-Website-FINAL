@@ -1,0 +1,32 @@
+VIP SURBITON: SETTINGS TO ENTER IN CLOUDFLARE
+=============================================
+Where: Cloudflare > Workers & Pages > your project > Settings > Variables and Secrets > Production > Add.
+Mark everything marked SECRET as "Secret" (encrypted). Never email or message these values to anyone.
+Keep a copy of every value in a password manager.
+
+NAME                      VALUE / WHERE IT COMES FROM                              SECRET?
+SITE_URL                  Your site address, e.g. https://vip-surbiton.pages.dev   No
+                          (later your real domain). Must match exactly, https,
+                          no slash at the end.
+ORDER_NOTIFY_EMAIL        nagim.ariaa@gmail.com                                    No
+ORDER_NOTIFY_PHONE        +447728918003                                            No
+RESEND_API_KEY            Resend > API Keys > Create                               SECRET
+RESEND_FROM_EMAIL         Testing: VIP Surbiton <onboarding@resend.dev>            No
+                          After your domain is verified in Resend:
+                          VIP Surbiton <orders@yourdomain.co.uk>
+TWILIO_ACCOUNT_SID        Twilio Console home page ("Account SID")                 No
+TWILIO_AUTH_TOKEN         Twilio Console home page ("Auth Token")                  SECRET
+TWILIO_FROM               VIPSurbiton (letters/numbers only, no spaces)            No
+UPSTASH_REDIS_REST_URL    Upstash > your database > REST API > "UPSTASH_REDIS_     No
+                          REST_URL"
+UPSTASH_REDIS_REST_TOKEN  Upstash > your database > REST API > "UPSTASH_REDIS_     SECRET
+                          REST_TOKEN"
+ADMIN_TOKEN               Make up 40+ random characters in your password manager   SECRET
+BUSINESS_PHONE            07728 918003                                             No
+BUSINESS_EMAIL            nagim.ariaa@gmail.com                                    No
+
+Also (if not already shown): Settings > Compatibility flags > add: nodejs_compat
+
+NOTES
+- While testing, sign up to Resend with nagim.ariaa@gmail.com. Until your own web address is verified in Resend, only that address can receive email, so the customer confirmation email will not send yet. Bookings still work and Nash still gets the alert email and text.
+- After you change any setting, redeploy (Deployments > Retry/Redeploy) so it takes effect.

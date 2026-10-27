@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /booking-confirmed
+# TODO: replace with production domain
+Sitemap: https://www.example.com/sitemap.xml

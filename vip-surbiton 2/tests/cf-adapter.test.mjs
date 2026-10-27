@@ -1,0 +1,12 @@
+import { wrap } from "../lib/cf-adapter.js";
+import catalog from "../api/catalog.js";
+import book from "../api/book.js";
+import assert from "assert";
+const env = { SITE_URL: "https://x.test" };
+let r = await wrap(catalog)({ request: new Request("https://x.test/api/catalog"), env });
+assert.equal(r.status, 200); assert((await r.json()).items.length > 10);
+r = await wrap(book)({ request: new Request("https://x.test/api/book", { method: "POST", headers: { origin: "https://evil.test", "content-type": "application/json" }, body: "{}" }), env });
+assert.equal(r.status, 403);
+r = await wrap(book)({ request: new Request("https://x.test/api/book", { method: "POST", headers: { origin: "https://x.test", "content-type": "application/json" }, body: "{}" }), env });
+assert.equal(r.status, 400);
+console.log("cloudflare adapter ok");
